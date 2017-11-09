@@ -1,0 +1,66 @@
+//
+//  PrefixHeader.pch
+//  EatAway
+//
+//  Created by apple on 2017/6/6.
+//  Copyright © 2017年 allen. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "ObjectForRequest.h"
+#import "ObjectForUser.h"
+#import "TotalFunctionView.h"
+#import "SMGlobalMethod.h"
+#import "HWHttpTool.h"
+#import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "Header.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//#define HTTPHOST @"192.168.0.115"
+//#define HTTPHOST @"http://192.168.0.111"
+//#define HTTPHOST @"http://wm.sawfree.com"
+//#define HTTPHOST @"http://108.61.96.39"
+#define HTTPHOST @"http://192.168.2.126/tp"
+//根据RGB生成颜色
+#define EWColor(r,g,b,a) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:(a)]
+#define MAINCOLOR [UIColor colorWithRed:154/255.0 green:211/255.0 blue:56/255.0 alpha:1]
+#define GRAYLINECOLOR [UIColor colorWithWhite:240/255.0 alpha:1]
+#define LANGUAGECHINESE [[NSUserDefaults standardUserDefaults] objectForKey:@"language"]
+#define ISCHINESE [[[NSUserDefaults standardUserDefaults] objectForKey:@"language"] isEqualToString:@"1"]
+
+#define WINDOWWIDTH  [UIScreen mainScreen].bounds.size.width
+#define WINDOWHEIGHT  [UIScreen mainScreen].bounds.size.height
+
+//#define HTTPHOST @"http://192.168.0.199:8088"
+
+
+
+#define ZEString(E,Z) ISCHINESE?Z:E
+
+
+// 判断字符串是否为空
+#define NULLString(string) ((![string isKindOfClass:[NSString class]])||[string isEqualToString:@""] || (string == nil) || [string isEqualToString:@""] || [string isKindOfClass:[NSNull class]]||[[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+
+#define USERID [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"]
+#define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]
+#define NICKNAME [[NSUserDefaults standardUserDefaults] objectForKey:@"nickname"]
+#define PHONENUMBER [[NSUserDefaults standardUserDefaults] objectForKey:@"phonenumber"]
+#define HEADPHOTO [[NSUserDefaults standardUserDefaults] objectForKey:@"headphoto"]
+#define BRAINTREETOKEN [[NSUserDefaults standardUserDefaults] objectForKey:@"braintreetoken"]
+#define LOCATION [[NSUserDefaults standardUserDefaults] objectForKey:@"location"]
+
+
+
+#define ALERTNOTLOGINBLOCK [TotalFunctionView alertContent:ZEString(@"请先登录", @"Please login first") onViewController:blockSelf];
+#define ALERTNOTLOGIN [TotalFunctionView alertContent:ZEString(@"请先登录", @"Please login first") onViewController:self];
+#define ALERTCLEARLOGINBLOCK [ObjectForUser clearLogin];[TotalFunctionView alertContent:ZEString(@"登录信息过期，请重新登录", @"Login information is outdated, please login again") onViewController:blockSelf];
+#define ALERTNOTLOGINANDPOP [TotalFunctionView alertAndDoneWithContent:ZEString(@"请先登录", @"Please login first") onViewController:self];
+
+
+
+
+#endif /* PrefixHeader_pch */
